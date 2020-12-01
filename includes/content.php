@@ -29,7 +29,7 @@ require_once "db.php";
                     echo "<h2><a href=''>{$title}</a></h2>";
                     echo "<p class='lead'>by <a href='#'>{$author}</a></p>";
                     echo "<p><span class='glyphicon glyphicon-time'></span> Posted on {$created}</p><hr>";
-                    echo "<img class='img-responsive' src='http://placehold.it/900x300' alt=''><hr>";
+                    echo "<img class='img-responsive' src='images/{$image}' alt='view'><hr>";
                     echo "<p>{$content}</p><a class='btn btn-primary' href='#'>Read More <span class='glyphicon glyphicon-chevron-right'></span></a><hr>";
                     
                 }
