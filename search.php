@@ -24,13 +24,13 @@ include "includes/navigation.php";
                         $author = $row["post_author"];
                         $created = $row["post_date"];
                         $image = $row["post_image"];
-                        $content = $row["post_content"];
+                        $content = substr($row["post_content"], 0, 200);
 
                         echo "<h2><a href=''>{$title}</a></h2>";
                         echo "<p class='lead'>by <a href='#'>{$author}</a></p>";
                         echo "<p><span class='glyphicon glyphicon-time'></span> Posted on {$created}</p><hr>";
                         echo "<img class='img-responsive' src='images/{$image}' alt='view'><hr>";
-                        echo "<p>{$content}</p><a class='btn btn-primary' href='#'>Read More <span class='glyphicon glyphicon-chevron-right'></span></a><hr>";
+                        echo "<p>{$content} ...</p><a class='btn btn-primary' href='#'>Read More <span class='glyphicon glyphicon-chevron-right'></span></a><hr>";
                     }
                 } else {
                     echo "<h1>No results.</h1>";
@@ -41,7 +41,7 @@ include "includes/navigation.php";
             ?>
 
         </div>
-    </div>
+    
     <hr>
 
     <?php
