@@ -34,10 +34,9 @@ require_once "db.php";
                     
                 }
             } else {
-                echo "0 results";
-                $conn->close();
+                echo "<h1>No results.</h1>";
             }
-            $conn->close();
+            
             ?>
 
 
