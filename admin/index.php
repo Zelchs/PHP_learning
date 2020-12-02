@@ -1,6 +1,6 @@
 <?php 
-include "includes/header.php";
-include "includes/navigation.php";
+include "includes/admin_header.php";
+include "includes/admin_navigation.php";
 ?>
 
 
@@ -15,7 +15,7 @@ include "includes/navigation.php";
                 <div class="col-lg-12">
                     <h1 class="page-header">
                         Welcome to Admin page
-                        <small>Subheading</small>
+                        <small>Main Page</small>
                     </h1>
                     
                 </div>
@@ -31,4 +31,4 @@ include "includes/navigation.php";
 </div>
 <!-- /#wrapper -->
 
-<?php include "includes/footer.php"; ?>
+<?php include "includes/admin_footer.php"; ?>

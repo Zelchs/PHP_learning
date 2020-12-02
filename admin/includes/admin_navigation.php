@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="">CMS</a>
+            <a class="navbar-brand" href="index.php">CMS</a>
         </div>
         <!-- Top Menu Items -->
         <ul class="nav navbar-right top-nav">
@@ -46,7 +46,7 @@
                 </li>
                 
                 <li>
-                    <a href="bootstrap-grid.html"><i class="fa fa-fw fa-list-alt"></i> Categories</a>
+                    <a href="categories.php"><i class="fa fa-fw fa-list-alt"></i> Categories</a>
                 </li>
                 
                 <li class="active">
