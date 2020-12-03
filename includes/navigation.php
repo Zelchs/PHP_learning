@@ -11,7 +11,7 @@ require_once "db.php";
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Start Bootstrap</a>
+            <a class="navbar-brand" href="index.php"><i class="fa fa-fw fa-home"></i></a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
@@ -22,7 +22,9 @@ require_once "db.php";
 
                 if ($result->num_rows > 0) {
                     while ($row = $result->fetch_assoc()) {
-                        echo "<li><a href='#'>{$row["cat_title"]}</a></li>";
+                        $title = $row['cat_title'];
+                        $id = $row['cat_id'];
+                        echo "<li><a href='category.php?category={$id}'>{$title}</a></li>";
                     }
                 } else {
                     echo "0 results";
@@ -30,7 +32,7 @@ require_once "db.php";
                 }
                 ?>
 
-              <li><a href="admin/index.php">Admin</a></li>  
+              <li><a href="admin/index.php"><i class="fa fa-fw fa-gear"></i>Admin</a></li>  
             </ul>
         </div>
     </div>

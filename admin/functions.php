@@ -146,14 +146,7 @@ function findAllPosts()
             $image = $row["post_image"];
             $comments = $row['post_comment_count'];
             $created = $row["post_date"];
-            $content = $row["post_content"];
-
-            // $sql = "SELECT * FROM categories WHERE cat_id='$category'";
-            // $result = $conn->query($sql);
-            // while ($row = $result->fetch_assoc()) {
-            //     $catTitle = $row['cat_title'];
-            //     echo "<td>{$catTitle}</td>";
-            // }
+            // $content = $row["post_content"];
 
             "<tr>";
             echo "<td>{$id}</td>";
@@ -168,8 +161,6 @@ function findAllPosts()
                 echo "<td>{$catTitle}</td>";
             }
 
-
-            // echo "<td>{$category}</td>";
             echo "<td>{$status}</td>";
             echo "<td><img class='img-thumbnail img-fluid' width='100' src='../images/{$image}' alt='view'></td>";
             echo "<td>{$comments}</td>";
@@ -191,6 +182,10 @@ function addPost()
         $category = $_POST['category'];
         $author = $_POST['author'];
         $status = $_POST['status'];
+
+        if (empty($status)) {
+            $status = "Draft";
+        }
 
         $image = $_FILES['image']['name'];
         $image_temp = $_FILES['image']['tmp_name'];
