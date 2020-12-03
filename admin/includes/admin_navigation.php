@@ -37,10 +37,10 @@
                     <a href="javascript:;" data-toggle="collapse" data-target="#postsDropdown"><i class="fa fa-fw fa-arrows-v"></i> Posts <i class="fa fa-fw fa-caret-down"></i></a>
                     <ul id="postsDropdown" class="collapse">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-eye"></i> View All Posts</a>
+                            <a href="./posts.php"><i class="fa fa-fw fa-eye"></i> View All Posts</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-plus"></i> Add Posts</a>
+                            <a href="posts.php?source=add_post"><i class="fa fa-fw fa-plus"></i> Add Posts</a>
                         </li>
                     </ul>
                 </li>
@@ -49,7 +49,7 @@
                     <a href="categories.php"><i class="fa fa-fw fa-list-alt"></i> Categories</a>
                 </li>
                 
-                <li class="active">
+                <li>
                     <a href="blank-page.html"><i class="fa fa-fw fa-comment"></i> Comments</a>
                 </li>
                 <li>

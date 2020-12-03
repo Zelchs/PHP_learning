@@ -1,5 +1,6 @@
 <?php ob_start(); ?>
 <?php  require_once "../includes/db.php"; ?>
+<?php include "functions.php"; ?>
 
 
 <!DOCTYPE html>
