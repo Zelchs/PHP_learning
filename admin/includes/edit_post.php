@@ -29,10 +29,19 @@ if (isset($_GET['p_id'])) {
 
             move_uploaded_file($image_temp, "../images/$image");
 
+            if (empty($image)) {
+                $sql = "SELECT * FROM `posts` WHERE post_id='$id'";
+                $result = $conn->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        $image = $row['post_image'];
+                    }
+                }
+            }
             if ($title == "" || empty($title)) {
                 echo "Please fill up all fields";
             } else {
-                
+
                 $sql = "UPDATE posts SET 
                 post_title='$title', 
                 post_author='$author', 

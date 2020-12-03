@@ -42,7 +42,8 @@ function findAllCategories()
     }
 }
 
-function selectCategory(){
+function selectCategory()
+{
     global $conn;
 
     $sql = "SELECT * FROM categories";
@@ -57,7 +58,6 @@ function selectCategory(){
     } else {
         echo "<option>No categories yet.</option>";
     }
-
 }
 
 function updateCategory()
@@ -131,11 +131,13 @@ function findAllPosts()
 {
     global $conn;
 
-    $sql = "SELECT * FROM `posts`";
+    $sql = "SELECT * FROM posts";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
+            
+
             $id = $row['post_id'];
             $author = $row["post_author"];
             $title = $row["post_title"];
@@ -146,55 +148,71 @@ function findAllPosts()
             $created = $row["post_date"];
             $content = $row["post_content"];
 
-            $html = "<tr>";
-            $html .= "<td>{$id}</td>";
-            $html .= "<td>{$author}</td>";
-            $html .= "<td>{$title}</td>";
-            // $html .= "<td>{$content}</td>";
-            $html .= "<td>{$category}</td>";
-            $html .= "<td>{$status}</td>";
-            $html .= "<td><img class='img-thumbnail img-fluid' width='100' src='../images/{$image}' alt='view'></td>";
-            $html .= "<td>{$comments}</td>";
-            $html .= "<td>{$created}</td>";
-            $html .= "<td><a href='posts.php?source=edit_post&p_id={$id}'>Edit</a></td>";
-            $html .= "<td><a href='posts.php?delete_post={$id}'>Delete</a></td>";
-            $html .= "</tr>";
+            // $sql = "SELECT * FROM categories WHERE cat_id='$category'";
+            // $result = $conn->query($sql);
+            // while ($row = $result->fetch_assoc()) {
+            //     $catTitle = $row['cat_title'];
+            //     echo "<td>{$catTitle}</td>";
+            // }
 
-            echo $html;
+            "<tr>";
+            echo "<td>{$id}</td>";
+            echo "<td>{$author}</td>";
+            echo "<td>{$title}</td>";
+            // $html .= "<td>{$content}</td>";
+
+            $query = "SELECT * FROM categories WHERE cat_id='$category'";
+            $results = $conn->query($query);
+            while ($row1 = $results->fetch_assoc()) {
+                $catTitle = $row1['cat_title'];
+                echo "<td>{$catTitle}</td>";
+            }
+
+
+            // echo "<td>{$category}</td>";
+            echo "<td>{$status}</td>";
+            echo "<td><img class='img-thumbnail img-fluid' width='100' src='../images/{$image}' alt='view'></td>";
+            echo "<td>{$comments}</td>";
+            echo "<td>{$created}</td>";
+            echo "<td><a href='posts.php?source=edit_post&p_id={$id}'>Edit</a></td>";
+            echo "<td><a href='posts.php?delete_post={$id}'>Delete</a></td>";
+            echo "</tr>";
         }
     } else {
         echo "<h1>No results.</h1>";
     }
 }
 
-function addPost() {
+function addPost()
+{
     global $conn;
     if (isset($_POST['submit-post'])) {
         $title = $_POST['title'];
         $category = $_POST['category'];
         $author = $_POST['author'];
         $status = $_POST['status'];
-      
+
         $image = $_FILES['image']['name'];
         $image_temp = $_FILES['image']['tmp_name'];
-      
+
         $content = $_POST['content'];
         $commentCount = 4;
-      
-      move_uploaded_file($image_temp, "../images/$image");
-      
-      $sql = "INSERT INTO posts (post_category_id, post_title, post_author, post_image, post_content, post_comment_count, post_status)
+
+        move_uploaded_file($image_temp, "../images/$image");
+
+        $sql = "INSERT INTO posts (post_category_id, post_title, post_author, post_image, post_content, post_comment_count, post_status)
       VALUES ('$category', '$title', '$author', '$image', '$content', '$commentCount', '$status')";
-      
-      if ($conn->query($sql) === TRUE) {
-          echo "New record created successfully";
+
+        if ($conn->query($sql) === TRUE) {
+            echo "New record created successfully";
         } else {
-         die("Error: " . $sql . "<br>" . $conn->error);
+            die("Error: " . $sql . "<br>" . $conn->error);
         }
-      }
+    }
 }
 
-function deletePost(){
+function deletePost()
+{
     if (isset($_GET['delete_post'])) {
         global $conn;
         $id = $_GET['delete_post'];
@@ -208,6 +226,3 @@ function deletePost(){
         header("Location: posts.php");
     }
 }
-
-
-?>
